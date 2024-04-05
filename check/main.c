@@ -10092,7 +10092,6 @@ static const char * const cmd_check_usage[] = {
 	OPTLINE("-p|--progress", "indicate progress"),
 	"",
 	"Deprecated or moved options:",
-	OPTLINE("--clear-ino-cache", "clear ino cache leftover items (moved to 'rescue' group)"),
 	OPTLINE("--clear-space-cache v1|v2", "clear space cache for v1 or v2 (moved to 'rescue' group)"),
 	NULL
 };
@@ -10127,7 +10126,7 @@ static int cmd_check(const struct cmd_struct *cmd, int argc, char **argv)
 			GETOPT_VAL_INIT_EXTENT, GETOPT_VAL_CHECK_CSUM,
 			GETOPT_VAL_READONLY, GETOPT_VAL_CHUNK_TREE,
 			GETOPT_VAL_MODE, GETOPT_VAL_CLEAR_SPACE_CACHE,
-			GETOPT_VAL_CLEAR_INO_CACHE, GETOPT_VAL_FORCE };
+			GETOPT_VAL_FORCE };
 		static const struct option long_options[] = {
 			{ "super", required_argument, NULL, 's' },
 			{ "repair", no_argument, NULL, GETOPT_VAL_REPAIR },
@@ -10149,8 +10148,6 @@ static int cmd_check(const struct cmd_struct *cmd, int argc, char **argv)
 				GETOPT_VAL_MODE },
 			{ "clear-space-cache", required_argument, NULL,
 				GETOPT_VAL_CLEAR_SPACE_CACHE},
-			{ "clear-ino-cache", no_argument , NULL,
-				GETOPT_VAL_CLEAR_INO_CACHE},
 			{ "force", no_argument, NULL, GETOPT_VAL_FORCE },
 			{ NULL, 0, NULL, 0}
 		};
@@ -10231,10 +10228,6 @@ static int cmd_check(const struct cmd_struct *cmd, int argc, char **argv)
 					exit(1);
 				}
 				ctree_flags |= OPEN_CTREE_WRITES;
-				break;
-			case GETOPT_VAL_CLEAR_INO_CACHE:
-				error("--clear-ino-cache option is deprecated, please use \"btrfs rescue clear-ino-cache\" instead");
-				exit(1);
 				break;
 			case GETOPT_VAL_FORCE:
 				force = 1;
