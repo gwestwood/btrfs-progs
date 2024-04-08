@@ -114,10 +114,10 @@ delete [options] [<subvolume> [<subvolume>...]], delete -i|--subvolid <subvolid>
                 filesystem with the subvolume
 
         --delete-qgroup
-                also delete the qgroup 0/subvolid if it exists
+                also delete the qgroup 0/subvolid if it exists (default since 6.9)
 
         --no-delete-qgroup
-                do not delete the 0/subvolid qgroup (default)
+                do not delete the 0/subvolid qgroup (default until 6.8)
 
         -v|--verbose
                 (deprecated) alias for global *-v* option
