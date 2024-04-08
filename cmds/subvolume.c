@@ -349,8 +349,8 @@ static const char * const cmd_subvolume_delete_usage[] = {
 	OPTLINE("-c|--commit-after", "wait for transaction commit at the end of the operation"),
 	OPTLINE("-C|--commit-each", "wait for transaction commit after deleting each subvolume"),
 	OPTLINE("-i|--subvolid", "subvolume id of the to be removed subvolume"),
-	OPTLINE("--delete-qgroup", "also delete the qgroup 0/subvolid if it exists"),
-	OPTLINE("--no-delete-qgroup", "do not delete the qgroup 0/subvolid if it exists (default)"),
+	OPTLINE("--delete-qgroup", "also delete the qgroup 0/subvolid if it exists (default since 6.9)"),
+	OPTLINE("--no-delete-qgroup", "do not delete the qgroup 0/subvolid if it exists (default until 6.8)"),
 	OPTLINE("-v|--verbose", "deprecated, alias for global -v option"),
 	HELPINFO_INSERT_GLOBALS,
 	HELPINFO_INSERT_VERBOSE,
@@ -378,7 +378,7 @@ static int cmd_subvolume_delete(const struct cmd_struct *cmd, int argc, char **a
 	enum { COMMIT_AFTER = 1, COMMIT_EACH = 2 };
 	enum btrfs_util_error err;
 	uint64_t default_subvol_id, target_subvol_id = 0;
-	bool opt_delete_qgroup = false;
+	bool opt_delete_qgroup = true;
 
 	optind = 0;
 	while (1) {
