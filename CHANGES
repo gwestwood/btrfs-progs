@@ -213,7 +213,7 @@ btrfs-progs-6.3.1 (2023-05-29)
    * convert: fix checksum of a block relocated from 0-1M range
    * qgroup show: fix formatting of limit values in json output
    * receive: report parent subvol UUID on errors
-   * btrfsune: new option --convert-to-free-space-tree to convert from
+   * btrfstune: new option --convert-to-free-space-tree to convert from
      block-group-tree back to extent tree for block group tracking
    * mkfs: make option --rootdir more verbose and report start when filling
      from the given directory starts
@@ -1775,7 +1775,7 @@ btrfs-progs-4.1 (2015-06-22)
 
   New:
      * rescue zero-log
-     * btrfsune:
+     * btrfstune:
         * rewrite uuid on a filesystem image
         * new option to turn on NO_HOLES incompat feature
 
